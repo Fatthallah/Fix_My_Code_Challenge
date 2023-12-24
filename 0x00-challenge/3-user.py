@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
 """
-	THe Comment I have to read
+ User Model
 """
 import hashlib
 import uuid
@@ -9,55 +8,49 @@ import uuid
 
 class User():
     """
-    The Comment:
-    THe Comment I have to read
-    THe Comment I have to read
+    User class:
+    - id: public string unique (uuid)
+    - password: private string hash in MD5
     """
 
     __password = None
 
     def __init__(self):
-        
-	"""
-        The Comment:
-        THe Comment I have to read
+        """
+        Initialize a new user:
+        - assigned an unique `id`
         """
         self.id = str(uuid.uuid4())
 
     @property
     def password(self):
-        
-	"""
-        THe Comment I have to read
+        """
+        Password getter
         """
         return self.__password
 
     @password.setter
     def password(self, pwd):
-        
-	"""
-        The Comment:
-        THe Comment I have to read
-        THe Comment I have to read
-        THe Comment I have to read
         """
-        
-		if pwd is None or type(pwd) is not str:
+        Password setter:
+        - `None` if `pwd` is `None`
+        - `None` if `pwd` is not a string
+        - Hash `pwd` in MD5 before assign to `__password`
+        """
+        if pwd is None or type(pwd) is not str:
             self.__password = None
         else:
             self.__password = hashlib.md5(pwd.encode()).hexdigest().lower()
 
     def is_valid_password(self, pwd):
-        
-	"""
-        The Comment:
-        THe Comment I have to read
-        THe Comment I have to read
-        THe Comment I have to read
-        THe Comment I have to read
         """
-        
-		if pwd is None or type(pwd) is not str:
+        Valid password:
+        - `False` if `pwd` is `None`
+        - `False` if `pwd` is not a string
+        - `False` if `__password` is `None`
+        - Compare `__password` and the MD5 value of `pwd`
+        """
+        if pwd is None or type(pwd) is not str:
             return False
         if self.password is None:
             return False
