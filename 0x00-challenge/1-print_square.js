@@ -1,10 +1,8 @@
 #!/usr/bin/node
-
-
 /*
-    The Comment I have to right
-    The Comment I have to right
-    The Comment I have to right
+    Print a square with the character #
+    The size of the square must be the first argument 
+    of the program.
 */
 
 
